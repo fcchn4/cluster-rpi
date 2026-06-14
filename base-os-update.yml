@@ -1,4 +1,4 @@
-- name: Update Operating Systems
+- name: RPI UPDATE OPERATING SYSTEM
   hosts: all
   become: True
 
@@ -19,7 +19,7 @@
 
   vars:
     ansible_user: pi
-    ansible_private_key_file: ~/.ssh/ssh-cluster
+    ansible_private_key_file: ~/.ssh/rpi-ssh
     ansible_port: 22
 
 # Default Raspbian User: pi

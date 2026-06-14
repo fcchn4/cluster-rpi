@@ -1,17 +1,17 @@
 all:
-  #hosts:
   children:
-    serverk3s:
+    k8s_master:
       hosts:
-        10.172.1.21:
-    workersk3s:
-      hosts:        
-        10.172.1.22:
-        10.172.1.23:
-        10.172.1.24:        
+        192.168.1.41:
+    k8s_workers:
+      hosts:
+        192.168.1.42:
+        192.168.1.43:
+        192.168.1.44:
+        192.168.1.45:
 
   vars:
     ansible_user: "{{ debian_user }}"
     ansible_port: "{{ debian_port }}"
-    ansible_private_key_file: "{{ debian_private_key_file }}"    
+    ansible_private_key_file: "{{ debian_private_key_file }}"
     ansible_python_interpreter: "/usr/bin/python3"

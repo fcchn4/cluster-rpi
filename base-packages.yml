@@ -9,30 +9,18 @@
           - vim
           - pv
           - tree
-          - speedtest-cli
-          - tmux
-          - pwgen
-          - fdupes
           - apt-transport-https
           - ca-certificates
           - curl
+          - wget
           - gnupg
           - gnupg-agent
           - lsb-release
           - vim
           - build-essential
-          - checkinstall
           - make
-          - automake
-          - cmake
-          - autoconf
           - dkms
           - git
-          - dirmngr
-          - software-properties-common
-          - gcc
-          - g++
-          - lm-sensors
           - ssh
           - rsync
           - jq
@@ -44,17 +32,6 @@
           - bzip2
           - zip
           - unzip
-          - p7zip
-          - p7zip-full
-          - unrar-free
-          - lzip
-          - lhasa
-          - arj
-          - sharutils
-          - mpack
-          - lzma
-          - lzop
-          - cabextract
           - xz-utils
         state: latest
 
@@ -62,22 +39,12 @@
       apt:
         name:
           - whois
-          - bind9utils
-          - dnsutils
-          - traceroute
-          - nmap
-          - tcpdump
-          - fping
-          - masscan
           - htop
         state: latest
 
-    - name: DETECT AUTOMATIC SENSORS
-      shell: sensors-detect --auto
-
   vars:
     ansible_user: pi
-    ansible_private_key_file: ~/.ssh/ssh-cluster
+    ansible_private_key_file: ~/.ssh/rpi-ssh
     ansible_port: 22
 
 # Default Raspbian User: pi

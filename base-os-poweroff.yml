@@ -1,0 +1,12 @@
+- name: RPI POWER OFF
+  hosts: all
+  become: True
+
+  vars_files:
+    - vars/os-user-connect.yml
+
+  tasks:
+    - name: Power Off Raspberry Pi
+      community.general.shutdown:
+        msg: "Powering off the Raspberry Pi"
+        delay: 0

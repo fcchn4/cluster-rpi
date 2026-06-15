@@ -2,6 +2,9 @@
   hosts: all
   become: True
 
+  vars_files:
+    - vars/os-user-connect.yml
+
   tasks:
     - name: Update Cache Packages
       ansible.builtin.apt:
@@ -16,12 +19,3 @@
     - name: Execute Autoremove
       ansible.builtin.apt:
         autoremove: yes
-
-  vars:
-    ansible_user: pi
-    ansible_private_key_file: ~/.ssh/rpi-ssh
-    ansible_port: 22
-
-# Default Raspbian User: pi
-# Default Raspbian Password: raspbian
-# Default Raspbian Config: sudoers.d NOPASSWD

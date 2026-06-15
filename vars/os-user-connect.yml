@@ -1,0 +1,7 @@
+ansible_port: 22
+ansible_user: pi
+ansible_private_key_file: ~/.ssh/rpi-ssh
+
+# Default Raspbian User: pi
+# Default Raspbian Password: raspbian
+# Default Raspbian Config: sudoers.d NOPASSWD

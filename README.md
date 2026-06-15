@@ -31,7 +31,7 @@ ssh-copy-id -i ~/.ssh/rpi-ssh.pub pi@192.168.1.41
 | Archivo              | Descripción                                          |
 |----------------------|------------------------------------------------------|
 | `base-os-update.yml` | Actualiza el SO en todos los nodos                   |
-| `base-packages.yml`  | Instala paquetes base y repositorio Kubernetes v1.36 |
+| `base-os-packages.yml` | Instala paquetes base y repositorio Kubernetes v1.36 |
 | `k8s-master.yml`     | Configura los nodos master (RPi 3B)                  |
 | `k8s-workers.yml`    | Configura los nodos worker (RPi 4B)                  |
 
@@ -42,7 +42,7 @@ ssh-copy-id -i ~/.ssh/rpi-ssh.pub pi@192.168.1.41
 ansible-playbook base-os-update.yml -i inventory/inventory.yml
 
 # Instalar paquetes base
-ansible-playbook base-packages.yml -i inventory/inventory.yml
+ansible-playbook base-os-packages.yml -i inventory/inventory.yml
 
 # Configurar masters
 ansible-playbook k8s-master.yml -i inventory/inventory.yml
@@ -51,8 +51,16 @@ ansible-playbook k8s-master.yml -i inventory/inventory.yml
 ansible-playbook k8s-workers.yml -i inventory/inventory.yml
 ```
 
+## Lista de comandos
+
+```bash
+ansible all -m ping -i inventory/ping-inventory.yml
+ansible-playbook base-os-update.yml -i inventory/inventory.yml --ask-become-pass
+ansible-playbook base-os-packages.yml -i inventory/inventory.yml --ask-become-pass
+```
+
 ## Notas
 
-- Usuario `pi` configurado con `NOPASSWD` en sudoers — no se requiere `--ask-become-pass`
+- Para entornos con sudo con password, usar `--ask-become-pass`
 - Variables de conexión (`ansible_user`, `ansible_port`, `ansible_private_key_file`) definidas en `inventory/inventory.yml`
-- Versión de Kubernetes: `k8s_version` en `base-packages.yml` (actualmente `1.36`)
+- Versión de Kubernetes: `k8s_version` en `base-os-packages.yml` (actualmente `1.36`)

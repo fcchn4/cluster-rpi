@@ -1,0 +1,4 @@
+k8s_version: 1.36
+flannel_version: 0.24.0
+containerd_version: 1.7.0
+cni_plugins_version: 1.6.0

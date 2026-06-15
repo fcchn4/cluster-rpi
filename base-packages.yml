@@ -4,7 +4,7 @@
 
   tasks:
     - name: Install General Packages
-      apt:
+      ansible.builtin.apt:
         name:
           - vim
           - pv
@@ -28,7 +28,7 @@
         state: latest
 
     - name: Compress and Uncompress
-      apt:
+      ansible.builtin.apt:
         name:
           - bzip2
           - zip
@@ -37,14 +37,14 @@
         state: latest
 
     - name: Extra Tools
-      apt:
+      ansible.builtin.apt:
         name:
           - whois
           - htop
         state: latest
 
     - name: Kubernetes repository
-      deb822_repository:
+      ansible.builtin.deb822_repository:
         name: kubernetes
         types: deb
         uris: https://pkgs.k8s.io/core:/stable:/v{{ k8s_version }}/deb/

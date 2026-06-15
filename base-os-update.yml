@@ -4,17 +4,17 @@
 
   tasks:
     - name: Update Cache Packages
-      apt:
+      ansible.builtin.apt:
         update_cache: yes
         cache_valid_time: 3600
 
     - name: Upgrade Packages
-      apt:
+      ansible.builtin.apt:
         name: "*"
         state: latest
 
     - name: Execute Autoremove
-      apt:
+      ansible.builtin.apt:
         autoremove: yes
 
   vars:

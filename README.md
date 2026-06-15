@@ -51,15 +51,6 @@ ansible-playbook k8s-master.yml -i inventory/inventory.yml
 ansible-playbook k8s-workers.yml -i inventory/inventory.yml
 ```
 
-O mediante Makefile:
-
-```bash
-make base-update      # Actualizar SO
-make base-packages    # Instalar paquetes base
-make k3s-server       # Instalar K3s en masters
-make k3s-agents       # Instalar K3s en workers
-```
-
 ## Notas
 
 - Usuario `pi` configurado con `NOPASSWD` en sudoers — no se requiere `--ask-become-pass`

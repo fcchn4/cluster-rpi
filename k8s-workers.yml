@@ -1,5 +1,5 @@
 - name: INSTALL K3S AGENTS
-  hosts: agentsk3s
+  hosts: k8s_workers
   become: True
 
   tasks:

@@ -1,5 +1,5 @@
 - name: INSTALL K3S SERVER
-  hosts: serverk3s
+  hosts: k8s_master
   become: True
 
   tasks:

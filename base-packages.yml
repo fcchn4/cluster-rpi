@@ -1,8 +1,17 @@
-- name: INSTALL PACKAGES BASE
+- name: INSTALL BASE PACKAGES
   hosts: all
   become: True
 
   tasks:
+    - name: Add KUBERNETES SOURCES
+      deb822_repository:
+        name: kubernetes
+        types: deb
+        uris: https://pkgs.k8s.io/core:/stable:/v{{ k8s_version }}/deb/
+        suites: /
+        signed_by: https://pkgs.k8s.io/core:/stable:/v{{ k8s_version }}/deb/Release.key
+        enabled: true
+
     - name: Install General Packages
       apt:
         name:
@@ -46,6 +55,7 @@
     ansible_user: pi
     ansible_private_key_file: ~/.ssh/rpi-ssh
     ansible_port: 22
+    k8s_version: 1.36
 
 # Default Raspbian User: pi
 # Default Raspbian Password: raspbian

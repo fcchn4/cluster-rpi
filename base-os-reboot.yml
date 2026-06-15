@@ -1,0 +1,11 @@
+- name: RPI REBOOT
+  hosts: all
+  become: True
+
+  vars_files:
+    - vars/os-user-connect.yml
+
+  tasks:
+    - name: Reboot Raspberry Pi
+      ansible.builtin.reboot:
+        msg: "Rebooting the Raspberry Pi in 5 seconds"

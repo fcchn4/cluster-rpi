@@ -3,15 +3,6 @@
   become: True
 
   tasks:
-    - name: Add KUBERNETES SOURCES
-      deb822_repository:
-        name: kubernetes
-        types: deb
-        uris: https://pkgs.k8s.io/core:/stable:/v{{ k8s_version }}/deb/
-        suites: /
-        signed_by: https://pkgs.k8s.io/core:/stable:/v{{ k8s_version }}/deb/Release.key
-        enabled: true
-
     - name: Install General Packages
       apt:
         name:
@@ -33,6 +24,7 @@
           - ssh
           - rsync
           - jq
+          - python3-debian
         state: latest
 
     - name: Compress and Uncompress
@@ -50,6 +42,15 @@
           - whois
           - htop
         state: latest
+
+    - name: Kubernetes repository
+      deb822_repository:
+        name: kubernetes
+        types: deb
+        uris: https://pkgs.k8s.io/core:/stable:/v{{ k8s_version }}/deb/
+        suites: /
+        signed_by: https://pkgs.k8s.io/core:/stable:/v{{ k8s_version }}/deb/Release.key
+        enabled: true
 
   vars:
     ansible_user: pi
